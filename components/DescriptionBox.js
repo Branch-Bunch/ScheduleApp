@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react'
 import {
   Text,
   View,
-} from 'react-native';
+} from 'react-native'
 
-export default function DescriptionBox({
+const DescriptionBox = ({
   title,
   description,
-}) {
-  return (
+}) => (
     <View style={{alignItems: 'center'}}>
       <Text>{title}</Text>
       <Text>{description}</Text>
     </View>
-  );
-}
+)
+
+export default DescriptionBox
