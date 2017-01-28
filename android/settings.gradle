@@ -1,0 +1,3 @@
+rootProject.name = 'eventify'
+
+include ':app'
