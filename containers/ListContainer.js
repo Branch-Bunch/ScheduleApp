@@ -8,6 +8,7 @@ import {
 import { connect } from 'react-redux'
 import SectionHeader from '../components/SectionHeader.js'
 import Header from '../components/Header.js'
+import ModalContainer from './ModalContainer.js'
 
 const mapStateToProps = (state) => {
   const dataBlob = {
@@ -38,12 +39,15 @@ const mapStateToProps = (state) => {
 }
 
 const ListContainer = ({ dataSource }) => (
-  <ListView
-    dataSource={dataSource}
-    renderRow={(rowData, sectionID, rowID, highlightRow) => <Text>{rowData.name}</Text>}
-    renderHeader={renderHeader}
-    renderSectionHeader={renderSectionHeader}
-  />
+  <View>
+    <ListView
+      dataSource={dataSource}
+      renderRow={(rowData, sectionID, rowID, highlightRow) => <Text>{rowData.name}</Text>}
+      renderHeader={renderHeader}
+      renderSectionHeader={renderSectionHeader}
+    />
+    <ModalContainer/>
+  </View>
 )
 
 function renderHeader() {
