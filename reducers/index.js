@@ -41,7 +41,7 @@ const schedules = (state = initalState.schedules, action) => {
     case UPDATE_FILTER:
       return {
         ...state,
-        byTime: Object.keys(byTime).reduce((map, time) => ({
+        byTime: Object.keys(state.schedules.byTime).reduce((map, time) => ({
           ...map,
           [time]: state.schedules.byTime[time]
             .filter(id => state.schedule.minById[id].tag === action.filter)

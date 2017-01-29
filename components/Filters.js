@@ -8,15 +8,18 @@ const Filters = ({
   tags,
   updateFilter,
 }) => {
-  const filterButtons = tags.map((tag) => (
+  const filterButtons = tags.map((tag, index) => (
     <Button
       title={tag}
       onPress={() => updateFilter(tag)}
+      key={index}
     />
   ))
   return (
     <View>
-      {Filters}  
+      {filterButtons}  
     </View>
   )
 }
+
+export default Filters

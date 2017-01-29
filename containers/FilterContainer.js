@@ -1,5 +1,5 @@
 import React from 'react'
-import { connect } 'react-redux'
+import { connect } from 'react-redux'
 import { updateFilter } from '../actions'
 import Filters from '../components/Filters.js'
 
@@ -13,9 +13,9 @@ const FilterContainer = ({
   />
 )
 
-const mapStateToProps = state => (
+const mapStateToProps = state => ({
   tags: state.tags
-)
+})
 
 export default connect(
   mapStateToProps,
