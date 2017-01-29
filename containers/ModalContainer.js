@@ -6,10 +6,12 @@ import {
   Text,
   Button,
   TouchableHighlight,
+  ScrollView
 } from 'react-native'
-import { fetchDetailedSchedule } from '../actions'
+import { fetchDetailedSchedule, updateSelectedId } from '../actions'
 import { connect } from 'react-redux'
 import ListContainer from './ListContainer.js'
+import ScheduleDetail from '../components/ScheduleDetail.js'
 
 const mapStateToProps = (state) => { return {
   detailedSchedules: state.schedules.detById,
@@ -27,7 +29,9 @@ class ModalContainer extends Component {
   }
 
   render() {
-    const { detailedSchedules, id, fetchDetailedSchedule } = this.props
+    const { detailedSchedules, id, fetchDetailedSchedule, updateSelectedId } = this.props
+    const detailedSchedule = detailedSchedules[id] || {}
+    console.log(detailedSchedule);
     return (
       <View style={{marginTop: 22}}>
         <Modal
@@ -37,7 +41,14 @@ class ModalContainer extends Component {
         >
           <View style={{marginTop: 22}}>
           <View>
-            <Text>Hello World!</Text>
+            <ScrollView>
+              <ScheduleDetail text={detailedSchedule.name || ''}/>
+              <ScheduleDetail text={detailedSchedule.time || ''}/>
+              <ScheduleDetail text={detailedSchedule.place || ''}/>
+              <ScheduleDetail text={detailedSchedule.description || ''}/>
+              <ScheduleDetail text={detailedSchedule.duration || ''}/>
+              <ScheduleDetail text={detailedSchedule.tag || ''}/>
+            </ScrollView>
             <Button title={'X'} onPress={() => this.setModelVisible(false)}/>
           </View>
          </View>
@@ -47,6 +58,7 @@ class ModalContainer extends Component {
         <ListContainer onPress={(id) => {
           fetchDetailedSchedule(id)
           this.setModelVisible(true)
+          updateSelectedId(id)
         }}/>
 
       </View>
@@ -56,5 +68,5 @@ class ModalContainer extends Component {
 
 export default connect(
   mapStateToProps,
-  { fetchDetailedSchedule },
+  { fetchDetailedSchedule, updateSelectedId },
 )(ModalContainer)

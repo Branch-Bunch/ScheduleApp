@@ -2,6 +2,7 @@ import {
   FETCH_SCHEDULES,
   UPDATE_FILTER,
   FETCH_DETAILED_SCHEDULE,
+  UPDATE_SELECTED_ID,
 } from '../actions'
 import { combineReducers } from 'redux'
 
@@ -12,7 +13,11 @@ const initalState = {
     detById: {},
   },
   currentFilter: '',
+<<<<<<< HEAD
   tags: [],
+=======
+  selectedId: '',
+>>>>>>> Added show capabilities
 }
 
 const schedules = (state = initalState.schedules, action) => {
@@ -57,7 +62,7 @@ const schedules = (state = initalState.schedules, action) => {
           byTime: Object.keys(state.byTime).reduce((map, time) => ({
             ...map,
             [time]: state.byTime[time]
-              .filter(id => state.minById[id].tag === action.filter) 
+              .filter(id => state.minById[id].tag === action.filter)
           }), {})
         }
       }
@@ -85,6 +90,7 @@ const currentFilter = (state = initalState.currentFilter, action) => {
   }
 }
 
+
 const tags = (state = initalState.tags, action) => {
   switch (action.type) {
     case FETCH_SCHEDULES:
@@ -93,6 +99,13 @@ const tags = (state = initalState.tags, action) => {
       return Array.from(tagSet)
     default:
       return state
+
+const selectedId = (state = initalState.selectedId, action) => {
+  switch (action.type) {
+    case UPDATE_SELECTED_ID:
+    return action.id
+  default:
+    return state
   }
 }
 
@@ -100,4 +113,5 @@ export default combineReducers({
   tags,
   currentFilter,
   schedules,
+  selectedId,
 })
