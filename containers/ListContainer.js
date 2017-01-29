@@ -8,6 +8,7 @@ import {
 import { connect } from 'react-redux'
 
 import SectionHeader from '../components/SectionHeader.js'
+import Header from '../components/Header.js'
 
 const mapStateToProps = (state) => {
   const dataBlob = {
@@ -37,27 +38,25 @@ const mapStateToProps = (state) => {
 }
 
 const ListContainer = ({dataSource}) => {
-    return (
-      <ListView
-        dataSource={dataSource}
-        renderRow={(rowData, sectionID, rowID, highlightRow) => <Text>{rowData.name}</Text>}
-        renderHeader={renderHeader}
-        renderSectionHeader={renderSectionHeader}
-      />
-    )
-  }
+  return (
+    <ListView
+      dataSource={dataSource}
+      renderRow={(rowData, sectionID, rowID, highlightRow) => <Text>{rowData.name}</Text>}
+      renderHeader={renderHeader}
+      renderSectionHeader={renderSectionHeader}
+    />
+  )
+};
 
 function renderHeader() {
   return (
-    <View>
-      <Text>McHacks</Text>
-    </View>
+    <Header/>
   )
 }
 
 function renderSectionHeader(sectionData, sectionID) {
   return (
-      <Text>{sectionID}</Text>
+    <Text>{sectionID}</Text>
   )
 }
 
