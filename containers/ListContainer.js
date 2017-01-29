@@ -13,6 +13,17 @@ import Header from '../components/Header.js'
 import ModalContainer from './ModalContainer.js'
 import RowLayout from '../components/RowLayout.js'
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 10,
+    justifyContent: 'center',
+  },
+  text: {
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+});
 
 const mapStateToProps = (state) => {
   const dataBlob = {
@@ -47,8 +58,8 @@ const ListContainer = ({ dataSource, onPress }) => (
     <ListView
       dataSource={dataSource}
       renderRow={(rowData, sectionID, rowID, highlightRow) => (
-        <TouchableHighlight style = {{flex: 1}} onPress={() => onPress(rowID)}>
-        <Text>{rowData.name}</Text>
+        <TouchableHighlight style = {styles.container} onPress={() => onPress(rowID)}>
+        <Text style={styles.text}>{rowData.name}</Text>
         </TouchableHighlight>
       )}
       renderHeader={renderHeader}
@@ -63,15 +74,6 @@ function renderHeader() {
       <Header/>
       <FilterContainer />
     </View>
-  )
-}
-
-function renderRow(rowData, sectionID, rowID, highlightRow){
-  return(
-    <RowLayout
-    name={rowData.name}
-
-    />
   )
 }
 

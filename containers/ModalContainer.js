@@ -19,6 +19,18 @@ const mapStateToProps = (state) => { return {
   }
 }
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 10,
+    justifyContent: 'center',
+  },
+  text: {
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+});
+
 class ModalContainer extends Component {
   state = {
     modelVisible: false,
