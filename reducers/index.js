@@ -5,27 +5,30 @@ import { combineReducers } from 'redux'
 
 const initalState = {
   minById: {},
-  allId: [],
+  byTime: {},
   detById: {},
 }
 
-const schedules = (state=initalState, action) => {
+const schedules = (state = initalState, action) => {
   switch (action.type) {
     case FETCH_SCHEDULES:
-      const minById = action.schedules.reduce((byId, schedule) => {
-        return {
+      const minById = action.schedules.reduce((byId, schedule) => ({
           ...byId,
           [schedule.id]: schedule
-        }
-      }, state.minById)
+      }), state.minById)
 
-      const allId = action.schedules
-        .sort((a, b) => a.time - b.time)
-        .map(schedule => schedule.id)
+      const byTime = action.schedules
+        .reduce((times, schedule) => {
+          const prevTimes = times[schedule.time] || []
+          return {
+            ...times,
+            [schedule.time]: [...prevTimes, schedule.id]
+          }
+        }, {})
 
       return {
         minById,
-        allId,
+        byTime,
       }
 
     default:
@@ -36,4 +39,3 @@ const schedules = (state=initalState, action) => {
 export default combineReducers({
   schedules,
 })
-
