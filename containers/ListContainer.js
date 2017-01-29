@@ -7,6 +7,7 @@ import {
 } from 'react-native'
 import { connect } from 'react-redux'
 import SectionHeader from '../components/SectionHeader.js'
+import Header from '../components/Header.js'
 
 const mapStateToProps = (state) => {
   const dataBlob = {
