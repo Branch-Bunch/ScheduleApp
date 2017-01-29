@@ -6,6 +6,7 @@ import {
   Image
 } from 'react-native';
 import DescriptionBox from '../components/DescriptionBox.js'
+import ListContainer from '../ListContainer.js'
 
 export default class App extends Component {
   render() {
@@ -14,8 +15,7 @@ export default class App extends Component {
     };
     return (
       <View style={styles.container}>
-        <DescriptionBox title="HELLO WORLD!" description="cool stuff bro"/>
-        <Image source={pic} style={{width: 193, height: 110}}/>
+        <ListContainer/>
       </View>
     );
   }
