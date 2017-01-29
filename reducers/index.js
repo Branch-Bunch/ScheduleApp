@@ -1,6 +1,7 @@
 import {
   FETCH_SCHEDULES,
   UPDATE_FILTER,
+  FETCH_DETAILED_SCHEDULE,
 } from '../actions'
 import { combineReducers } from 'redux'
 
@@ -42,8 +43,17 @@ const schedules = (state = initalState.schedules, action) => {
         byTime: Object.keys(byTime).reduce((map, time) => ({
           ...map,
           [time]: state.schedules.byTime[time]
-            .filter(id => state.schedule.minById[id].tag === action.filter) 
+            .filter(id => state.schedule.minById[id].tag === action.filter)
         })),
+      }
+
+    case FETCH_DETAILED_SCHEDULE:
+      return {
+        ...state,
+        detById: {
+          ...state.detById,
+          [action.schedule.id]: action.schedule,
+        },
       }
 
     default:

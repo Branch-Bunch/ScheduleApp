@@ -9,7 +9,13 @@ import {
 } from 'react-native'
 import { connect } from 'react-redux'
 
-export default class ModalContainer extends Component {
+const mapStateToProps = (state) => { return {
+  detailedSchedules: state.schedules.detById,
+  id: state.selectedId
+  }
+}
+
+class ModalContainer extends Component {
   state = {
     modelVisible: false,
   }
@@ -19,20 +25,18 @@ export default class ModalContainer extends Component {
   }
 
   render() {
+    const { detailedSchedules, id } = this.props
     return (
       <View style={{marginTop: 22}}>
         <Modal
           animationType={"slide"}
           transparent={false}
           visible={this.state.modelVisible}
-          onRequestClose={() => {alert("Modal has been closed.")}}
         >
           <View style={{marginTop: 22}}>
           <View>
             <Text>Hello World!</Text>
-
             <Button title={'X'} onPress={() => this.setModelVisible(false)}/>
-
           </View>
          </View>
         </Modal>
@@ -42,3 +46,7 @@ export default class ModalContainer extends Component {
     )
   }
 }
+
+export default connect(
+  mapStateToProps,
+)(ModalContainer)
