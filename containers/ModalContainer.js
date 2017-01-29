@@ -7,9 +7,17 @@ import {
   Button,
   TouchableHighlight,
 } from 'react-native'
+import { fetchDetailedSchedule } from '../actions'
 import { connect } from 'react-redux'
+import ListContainer from './ListContainer.js'
 
-export default class ModalContainer extends Component {
+const mapStateToProps = (state) => { return {
+  detailedSchedules: state.schedules.detById,
+  id: state.selectedId
+  }
+}
+
+class ModalContainer extends Component {
   state = {
     modelVisible: false,
   }
@@ -19,26 +27,34 @@ export default class ModalContainer extends Component {
   }
 
   render() {
+    const { detailedSchedules, id, fetchDetailedSchedule } = this.props
     return (
       <View style={{marginTop: 22}}>
         <Modal
           animationType={"slide"}
           transparent={false}
           visible={this.state.modelVisible}
-          onRequestClose={() => {alert("Modal has been closed.")}}
         >
           <View style={{marginTop: 22}}>
           <View>
             <Text>Hello World!</Text>
-
             <Button title={'X'} onPress={() => this.setModelVisible(false)}/>
-
           </View>
          </View>
         </Modal>
 
-        <Button title={'Show Model'} onPress={() => this.setModelVisible(true)}/>
+        <Button title={'Show Modal'} onPress={() => this.setModelVisible(true)}/>
+        <ListContainer onPress={(id) => {
+          fetchDetailedSchedule(id)
+          this.setModelVisible(true)
+        }}/>
+
       </View>
     )
   }
 }
+
+export default connect(
+  mapStateToProps,
+  { fetchDetailedSchedule },
+)(ModalContainer)
