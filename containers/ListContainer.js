@@ -6,7 +6,6 @@ import {
   Text,
 } from 'react-native'
 import { connect } from 'react-redux'
-
 import SectionHeader from '../components/SectionHeader.js'
 
 const mapStateToProps = (state) => {
@@ -37,7 +36,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-const ListContainer = ({dataSource}) => (
+const ListContainer = ({ dataSource }) => (
   <ListView
     dataSource={dataSource}
     renderRow={(rowData, sectionID, rowID, highlightRow) => <Text>{rowData.name}</Text>}
