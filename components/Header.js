@@ -6,24 +6,27 @@ import {
   Image
 } from 'react-native';
 
-const imageUrl = 'http://www.music.mcgill.ca/~ich/pix/McGill_logoT.gif';
+// const imageUrl = 'http://www.music.mcgill.ca/~ich/pix/McGill_logoT.gif';
 
-const Header ({
+// <Image source={require(imageUrl)}>
+const Header = ({
   title,
-/** imageUrl */ ,
+/** imageUrl */
 }) => (
   <View style={styles.container}>
-  <Image source={require(imageUrl)}
+
   <Text>"Enter Event Title Here"</Text>
-  </Image>
+
   </View>
 )
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    margin: 40,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   }
-}
+})
+
+export default Header

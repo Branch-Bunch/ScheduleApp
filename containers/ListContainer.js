@@ -7,6 +7,7 @@ import {
 } from 'react-native'
 
 import SectionHeader from '../components/SectionHeader.js'
+import Header from '../components/Header.js'
 
 const styles = StyleSheet.create({
   container: {
@@ -86,9 +87,7 @@ export default class ListContainer extends Component {
 
   renderHeader() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>McHacks</Text>
-      </View>
+      <Header title='McHacks'/>
     )
   }
 
