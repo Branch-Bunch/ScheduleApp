@@ -8,7 +8,6 @@ import {
 import { connect } from 'react-redux'
 
 import SectionHeader from '../components/SectionHeader.js'
-import Header from '../components/Header.js'
 
 const mapStateToProps = (state) => {
   const dataBlob = {
@@ -17,6 +16,7 @@ const mapStateToProps = (state) => {
   }
 
   const sectionIdentities = Object.keys(state.schedules.byTime).sort((a, b) => a - b)
+
   const rowIdentities = sectionIdentities.reduce((rowIds, sectionId) => ([
     ...rowIds,
     state.schedules.byTime[sectionId],
@@ -56,10 +56,9 @@ function renderHeader() {
 
 function renderSectionHeader(sectionData, sectionID) {
   return (
-    <Text>{sectionID}</Text>
+      <Text>{sectionID}</Text>
   )
 }
-
 
 export default connect(
   mapStateToProps,
