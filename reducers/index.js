@@ -13,11 +13,8 @@ const initalState = {
     detById: {},
   },
   currentFilter: '',
-<<<<<<< HEAD
   tags: [],
-=======
   selectedId: '',
->>>>>>> Added show capabilities
 }
 
 const schedules = (state = initalState.schedules, action) => {
@@ -99,6 +96,8 @@ const tags = (state = initalState.tags, action) => {
       return Array.from(tagSet)
     default:
       return state
+    }
+  }
 
 const selectedId = (state = initalState.selectedId, action) => {
   switch (action.type) {
