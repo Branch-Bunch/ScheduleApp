@@ -29,8 +29,8 @@ const mapStateToProps = (state) => {
 
   console.log(rowIdentities);
 
-  const getSectionData = (dataBlob, sectionId) => sectionId;
-  const getRowData = (dataBlob, sectionId, rowId) => dataBlob.minSchedules[rowId];
+  const getSectionData = (dataBlob, sectionId) => sectionId
+  const getRowData = (dataBlob, sectionId, rowId) => dataBlob.minSchedules[rowId]
 
   const ds = new ListView.DataSource({
     rowHasChanged: (r1, r2) => r1 !== r2,
@@ -48,7 +48,7 @@ const ListContainer = ({dataSource}) => {
     return (
       <ListView
         dataSource={dataSource}
-        renderRow={(rowData, sectionID, rowID, highlightRow) => <Text>{rowData}</Text>}
+        renderRow={(rowData, sectionID, rowID, highlightRow) => <Text>{rowData.name}</Text>}
         renderHeader={renderHeader}
         renderSectionHeader={renderSectionHeader}
       />
@@ -68,6 +68,7 @@ function renderSectionHeader(sectionData, sectionID) {
       <Text>{sectionID}</Text>
   )
 }
+
 
 export default connect(
   mapStateToProps,
