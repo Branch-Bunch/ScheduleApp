@@ -12,6 +12,7 @@ const initalState = {
     detById: {},
   },
   currentFilter: '',
+  tags: [],
 }
 
 const schedules = (state = initalState.schedules, action) => {
@@ -70,6 +71,19 @@ const currentFilter = (state = initalState.currentFilter, action) => {
   }
 }
 
+const tags = (state = initalState.tags, action) => {
+  switch (action.type) {
+    case FETCH_SCHEDULES:
+      const tagSet = new Set()
+      action.schedules.forEach(schedule => tagSet.add(schedule.tag))
+      return Array.from(tagSet)
+    default:
+      return state
+  }
+}
+
 export default combineReducers({
+  tags,
+  currentFilter,
   schedules,
 })

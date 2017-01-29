@@ -12,13 +12,11 @@ let imageSrc = {
 
 const Header = ({
   title,
-
 }) => (
   <View style={styles.container}>
     <Image source={imageSrc} style={styles.backgroundImage}>
       <Text style={styles.Backtext}> McHacks</Text>
     </Image>
-
   </View>
 )
 
