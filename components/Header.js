@@ -22,7 +22,6 @@ const Header = ({
 
 const styles = StyleSheet.create({
   container: {
-    margin: 30,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'transparent',
@@ -44,8 +43,8 @@ const styles = StyleSheet.create({
   Backtext:{
     textAlign: 'center',
     fontSize: 45,
-    // color:'white',
-    fontWeight: 'bold',
+    color:'white',
+    // fontWeight: 'bold',
   }
 })
 
