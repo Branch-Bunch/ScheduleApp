@@ -6,7 +6,7 @@ import {
   Image
 } from 'react-native';
 import DescriptionBox from '../components/DescriptionBox.js'
-import ListContainer from './ListContainer.js'
+import ModalContainer from './ModalContainer.js'
 
 export default class App extends Component {
   render() {
@@ -15,7 +15,7 @@ export default class App extends Component {
     };
     return (
       <View style={styles.container}>
-        <ListContainer/>
+        <ModalContainer/>
       </View>
     );
   }

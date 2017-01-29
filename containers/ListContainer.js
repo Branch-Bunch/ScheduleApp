@@ -4,6 +4,7 @@ import {
   ListView,
   View,
   Text,
+  TouchableHighlight,
 } from 'react-native'
 import { connect } from 'react-redux'
 import SectionHeader from '../components/SectionHeader.js'
@@ -38,17 +39,22 @@ const mapStateToProps = (state) => {
   }
 }
 
-const ListContainer = ({ dataSource }) => (
+const ListContainer = ({ dataSource, onPress }) => {
+  return (
   <View>
     <ListView
       dataSource={dataSource}
-      renderRow={(rowData, sectionID, rowID, highlightRow) => <Text>{rowData.name}</Text>}
+      renderRow={(rowData, sectionID, rowID, highlightRow) => (
+        <TouchableHighlight style = {{flex: 1}} onPress={() => onPress(rowID)}>
+        <Text>{rowData.name}</Text>
+        </TouchableHighlight>
+      )}
       renderHeader={renderHeader}
       renderSectionHeader={renderSectionHeader}
     />
-    <ModalContainer/>
   </View>
-)
+  )
+}
 
 function renderHeader() {
   return (
