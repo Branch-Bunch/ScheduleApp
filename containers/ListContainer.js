@@ -7,7 +7,6 @@ import {
 } from 'react-native'
 
 import SectionHeader from '../components/SectionHeader.js'
-import Header from '../components/Header.js'
 
 const styles = StyleSheet.create({
   container: {
@@ -77,17 +76,19 @@ export default class ListContainer extends Component {
   render() {
     return (
       <ListView
-      dataSource={this.state.dataSource}
-      renderRow={(rowData, sectionID, rowID, highlightRow)  => <Text>{rowData}</Text>}
-      renderHeader={this.renderHeader}
-      renderSectionHeader={this.renderSectionHeader}
+        dataSource={this.state.dataSource}
+        renderRow={(rowData, sectionID, rowID, highlightRow)  => <Text>{rowData}</Text>}
+        renderHeader={this.renderHeader}
+        renderSectionHeader={this.renderSectionHeader}
       />
     )
   }
 
   renderHeader() {
     return (
-      <Header title='McHacks'/>
+      <View style={styles.container}>
+        <Text style={styles.welcome}>McHacks</Text>
+      </View>
     )
   }
 
