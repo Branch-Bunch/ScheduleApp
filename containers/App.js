@@ -6,7 +6,7 @@ import {
   Image
 } from 'react-native';
 import DescriptionBox from '../components/DescriptionBox.js'
-import ListContainer from '../ListContainer.js'
+import ListContainer from './ListContainer.js'
 
 export default class App extends Component {
   render() {

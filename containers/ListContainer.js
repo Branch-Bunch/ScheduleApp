@@ -6,7 +6,7 @@ import {
   Text,
 } from 'react-native'
 
-import SectionHeader from './SectionHeader.js'
+import SectionHeader from '../components/SectionHeader.js'
 
 const styles = StyleSheet.create({
   container: {
