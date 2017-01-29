@@ -54,7 +54,6 @@ class ModalContainer extends Component {
          </View>
         </Modal>
 
-        <Button title={'Show Modal'} onPress={() => this.setModelVisible(true)}/>
         <ListContainer onPress={(id) => {
           fetchDetailedSchedule(id)
           this.setModelVisible(true)
