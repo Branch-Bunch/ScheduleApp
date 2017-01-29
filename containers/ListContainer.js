@@ -10,24 +10,16 @@ import { connect } from 'react-redux'
 import SectionHeader from '../components/SectionHeader.js'
 
 const mapStateToProps = (state) => {
-  console.log(state)
   const dataBlob = {
     minSchedules: state.schedules.minById,
     byTime: state.schedules.byTime,
   }
 
-  console.log(dataBlob);
-
   const sectionIdentities = Object.keys(state.schedules.byTime).sort((a, b) => a - b)
-
-  console.log(sectionIdentities);
-
   const rowIdentities = sectionIdentities.reduce((rowIds, sectionId) => ([
     ...rowIds,
     state.schedules.byTime[sectionId],
   ]), [])
-
-  console.log(rowIdentities);
 
   const getSectionData = (dataBlob, sectionId) => sectionId
   const getRowData = (dataBlob, sectionId, rowId) => dataBlob.minSchedules[rowId]
