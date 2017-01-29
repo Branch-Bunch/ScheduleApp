@@ -7,6 +7,7 @@ import {
   TouchableHighlight,
 } from 'react-native'
 import { connect } from 'react-redux'
+import FilterContainer from './FilterContainer.js'
 import SectionHeader from '../components/SectionHeader.js'
 import Header from '../components/Header.js'
 import ModalContainer from './ModalContainer.js'
@@ -39,8 +40,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-const ListContainer = ({ dataSource, onPress }) => {
-  return (
+const ListContainer = ({ dataSource, onPress }) => (
   <View>
     <ListView
       dataSource={dataSource}
@@ -53,12 +53,14 @@ const ListContainer = ({ dataSource, onPress }) => {
       renderSectionHeader={renderSectionHeader}
     />
   </View>
-  )
-}
+)
 
 function renderHeader() {
   return (
-    <Header/>
+    <View>
+      <Header/>
+      <FilterContainer />
+    </View>
   )
 }
 

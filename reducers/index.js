@@ -12,6 +12,7 @@ const initalState = {
     detById: {},
   },
   currentFilter: '',
+  tags: [],
 }
 
 const schedules = (state = initalState.schedules, action) => {
@@ -38,13 +39,27 @@ const schedules = (state = initalState.schedules, action) => {
       }
 
     case UPDATE_FILTER:
-      return {
-        ...state,
-        byTime: Object.keys(byTime).reduce((map, time) => ({
-          ...map,
-          [time]: state.schedules.byTime[time]
-            .filter(id => state.schedule.minById[id].tag === action.filter)
-        })),
+      switch (action.filter) {
+      case '':
+        return {
+          ...state,
+          byTime: Object.keys(state.minById).reduce((times, id) => {
+            const prevTimes = times[state.minById[id].time] || []
+            return {
+              ...times,
+              [state.minById[id].time]: [...prevTimes, id]
+            }
+          }, {})
+      }
+      default:
+        return {
+          ...state,
+          byTime: Object.keys(state.byTime).reduce((map, time) => ({
+            ...map,
+            [time]: state.byTime[time]
+              .filter(id => state.minById[id].tag === action.filter) 
+          }), {})
+        }
       }
 
     case FETCH_DETAILED_SCHEDULE:
@@ -70,6 +85,19 @@ const currentFilter = (state = initalState.currentFilter, action) => {
   }
 }
 
+const tags = (state = initalState.tags, action) => {
+  switch (action.type) {
+    case FETCH_SCHEDULES:
+      const tagSet = new Set()
+      action.schedules.forEach(schedule => tagSet.add(schedule.tag))
+      return Array.from(tagSet)
+    default:
+      return state
+  }
+}
+
 export default combineReducers({
+  tags,
+  currentFilter,
   schedules,
 })
