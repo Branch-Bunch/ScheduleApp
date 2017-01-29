@@ -39,13 +39,27 @@ const schedules = (state = initalState.schedules, action) => {
       }
 
     case UPDATE_FILTER:
-      return {
-        ...state,
-         byTime: Object.keys(state.byTime).reduce((map, time) => ({
-          ...map,
-          [time]: state.byTime[time]
-            .filter(id => state.minById[id].tag === action.filter) 
-        }), {}),
+      switch (action.filter) {
+      case '':
+        return {
+          ...state,
+          byTime: Object.keys(state.minById).reduce((times, id) => {
+            const prevTimes = times[state.minById[id].time] || []
+            return {
+              ...times,
+              [state.minById[id].time]: [...prevTimes, id]
+            }
+          }, {})
+      }
+      default:
+        return {
+          ...state,
+          byTime: Object.keys(state.byTime).reduce((map, time) => ({
+            ...map,
+            [time]: state.byTime[time]
+              .filter(id => state.minById[id].tag === action.filter) 
+          }), {})
+        }
       }
 
     case FETCH_DETAILED_SCHEDULE:

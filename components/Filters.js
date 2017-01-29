@@ -17,6 +17,10 @@ const Filters = ({
   ))
   return (
     <View>
+      <Button
+        title='Clear'
+        onPress={() => updateFilter('')}
+      />
       {filterButtons}  
     </View>
   )
