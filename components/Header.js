@@ -6,26 +6,48 @@ import {
   Image
 } from 'react-native';
 
-// const imageUrl = 'http://www.music.mcgill.ca/~ich/pix/McGill_logoT.gif';
+let imageSrc = {
+  uri: 'https://c1.staticflickr.com/5/4063/4706409168_db387a311e_b.jpg'
+}
 
-// <Image source={require(imageUrl)}>
 const Header = ({
   title,
-/** imageUrl */
+
 }) => (
   <View style={styles.container}>
-
-  <Text>"Enter Event Title Here"</Text>
+    <Image source={imageSrc} style={styles.backgroundImage}>
+      <Text style={styles.Backtext}> McHacks</Text>
+    </Image>
 
   </View>
 )
 
 const styles = StyleSheet.create({
   container: {
-    margin: 40,
+    margin: 30,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: 'transparent',
+    flexDirection: 'column',
+    // paddingTop: ,
+    // paddingBottom: 20,
+    // paddingLeft: 10,
+    // paddingRight: 10
+  },
+
+  backgroundImage: {
+      flex: 1,
+      width: 380,
+      height: 100,
+      resizeMode: 'stretch', // or 'stretch'
+      alignItems: 'stretch',
+
+  },
+  Backtext:{
+    textAlign: 'center',
+    fontSize: 45,
+    // color:'white',
+    fontWeight: 'bold',
   }
 })
 
