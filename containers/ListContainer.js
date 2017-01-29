@@ -11,6 +11,8 @@ import FilterContainer from './FilterContainer.js'
 import SectionHeader from '../components/SectionHeader.js'
 import Header from '../components/Header.js'
 import ModalContainer from './ModalContainer.js'
+import RowLayout from '../components/RowLayout.js'
+
 
 const mapStateToProps = (state) => {
   const dataBlob = {
@@ -64,9 +66,18 @@ function renderHeader() {
   )
 }
 
+function renderRow(rowData, sectionID, rowID, highlightRow){
+  return(
+    <RowLayout
+    name={rowData.name}
+
+    />
+  )
+}
+
 function renderSectionHeader(sectionData, sectionID) {
   return (
-      <Text>{sectionID}</Text>
+      <SectionHeader title={ sectionID }/>
   )
 }
 

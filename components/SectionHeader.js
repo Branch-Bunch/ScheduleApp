@@ -7,16 +7,20 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 8,
     justifyContent: 'center',
-    backgroundColor: '#EAEAEA',
+    backgroundColor: '#00c3ff', /* fallback for old browsers */
+
   },
   text: {
     fontSize: 13,
+    textAlign: 'center',
+    fontWeight: 'bold',
+    textDecorationLine: 'underline',
   },
 });
 
 const SectionHeader = (props) => (
   <View style={styles.container}>
-    <Text style={styles.text}>{props.name}</Text>
+    <Text style={styles.text}>{props.title}</Text>
   </View>
 );
 
